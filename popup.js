@@ -1,13 +1,17 @@
 document.getElementById('convert').addEventListener('click', function() {
     var objectId = document.getElementById('objectId').value;
+    var resultDiv = document.getElementById('result');
+
     if (objectId.length !== 24) {
-        document.getElementById('result').textContent = 'Invalid ObjectId!';
+        resultDiv.textContent = 'Invalid ObjectId!';
+        resultDiv.style.display = 'block'; // make it visible
         return;
     }
     
     var date = dateFromObjectId(objectId);
     var timeAgo = getTimeAgo(date);
-    document.getElementById('result').textContent = 'Date: ' + date.toString() + ' (' + timeAgo + ')';
+    resultDiv.textContent = 'Date: ' + date.toString() + ' (' + timeAgo + ')';
+    resultDiv.style.display = 'block'; // make it visible
 });
 
 function dateFromObjectId(objectId) {
